@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shubham Halle — Software Engineer & Automation Specialist</title>
+  <meta name="description" content="Full-stack engineer with 7+ years. React, Node.js, Java, Python. Automation discovery, agentic workflows, self-hosted infrastructure.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07080a;
+      --surface: #0f1012;
+      --border: #1c1e22;
+      --border-bright: #2a2d33;
+      --text: #e8eaed;
+      --muted: #5a6070;
+      --subtle: #2e3238;
+      --accent: #e8ff47;
+      --accent-dim: rgba(232,255,71,0.07);
+      --accent-border: rgba(232,255,71,0.18);
+      --orange: #ff8c42;
+      --orange-dim: rgba(255,140,66,0.08);
+      --blue: #4d9fff;
+      --blue-dim: rgba(77,159,255,0.08);
+      --green: #4dff9a;
+      --green-dim: rgba(77,255,154,0.08);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: 'DM Sans', sans-serif; font-weight: 300;
+      line-height: 1.7; overflow-x: hidden;
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      opacity: 0.4;
+    }
+    body::after {
+      content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 80px 80px; opacity: 0.4;
+    }
+
+    .wrap { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(7,8,10,0.88); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 32px;
+      display: flex; align-items: center; height: 56px;
+    }
+    .nav-logo { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--accent); letter-spacing: 0.05em; text-decoration: none; }
+    .nav-logo span { color: var(--muted); }
+    .nav-links { margin-left: auto; display: flex; gap: 28px; list-style: none; align-items: center; }
+    .nav-links a { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-resume { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #07080a !important; background: var(--accent); padding: 5px 12px; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none; transition: background 0.2s !important; }
+    .nav-resume:hover { background: #d4eb3e !important; color: #07080a !important; }
+
+    /* HERO */
+    .hero { padding: 148px 0 80px; }
+    .hero-eyebrow { display: flex; align-items: center; gap: 10px; margin-bottom: 28px; }
+    .hero-eyebrow-line { width: 40px; height: 1px; background: var(--accent); }
+    .hero-eyebrow span { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.15em; }
+    .hero-name { font-family: 'Bebas Neue', sans-serif; font-size: clamp(80px, 12vw, 156px); line-height: 0.88; letter-spacing: 0.02em; color: var(--text); margin-bottom: 8px; }
+    .hero-name .accent { color: var(--accent); }
+    .hero-role { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--muted); letter-spacing: 0.05em; margin-bottom: 36px; }
+    .hero-role .blink { display: inline-block; width: 8px; height: 13px; background: var(--accent); vertical-align: middle; margin-left: 4px; animation: blink 1.2s infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+    .hero-bio { font-size: 17px; color: var(--muted); max-width: 560px; line-height: 1.75; margin-bottom: 40px; }
+    .hero-bio strong { color: var(--text); font-weight: 500; }
+
+    /* Automation callout in hero */
+    .hero-callout {
+      display: inline-flex; align-items: flex-start; gap: 14px;
+      background: var(--orange-dim); border: 1px solid rgba(255,140,66,0.2);
+      border-radius: 8px; padding: 14px 18px; margin-bottom: 40px;
+      max-width: 560px;
+    }
+    .hero-callout-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+    .hero-callout-text { font-size: 14px; color: var(--muted); line-height: 1.6; }
+    .hero-callout-text strong { color: #ff8c42; font-weight: 500; }
+
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 22px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none; transition: all 0.2s; cursor: pointer; border: none; }
+    .btn-primary { background: var(--accent); color: #07080a; font-weight: 500; }
+    .btn-primary:hover { background: #d4eb3e; transform: translateY(-1px); }
+    .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border-bright); }
+    .btn-ghost:hover { border-color: var(--muted); transform: translateY(-1px); }
+
+    /* SECTION */
+    section { margin-bottom: 110px; }
+    .section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 44px; }
+    .section-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); letter-spacing: 0.1em; }
+    .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 44px; letter-spacing: 0.04em; color: var(--text); line-height: 1; }
+    .section-line { flex: 1; height: 1px; background: var(--border); }
+
+    /* EXPERIENCE — compact timeline */
+    .exp-timeline { display: flex; flex-direction: column; gap: 0; }
+    .exp-row {
+      display: grid; grid-template-columns: 180px 40px 1fr;
+      align-items: start; gap: 0;
+    }
+    .exp-row:last-child .exp-line { display: none; }
+    .exp-left { padding: 20px 20px 20px 0; border-right: none; }
+    .exp-period { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 0.04em; margin-bottom: 4px; }
+    .exp-company { font-size: 13px; color: var(--accent); font-weight: 500; }
+    .exp-location-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); }
+    .exp-connector { display: flex; flex-direction: column; align-items: center; padding-top: 24px; }
+    .exp-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); border: 2px solid var(--bg); flex-shrink: 0; }
+    .exp-line { width: 1px; flex: 1; background: var(--border); min-height: 60px; margin-top: 4px; }
+    .exp-right { padding: 18px 0 28px 20px; border-left: 1px solid var(--border); }
+    .exp-role { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.04em; color: var(--text); margin-bottom: 8px; line-height: 1; }
+    .exp-summary { font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 10px; max-width: 600px; }
+    .exp-summary strong { color: var(--text); font-weight: 500; }
+    .tech-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tech-pill { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); background: var(--surface); border: 1px solid var(--border); border-radius: 3px; padding: 3px 8px; text-transform: uppercase; letter-spacing: 0.07em; }
+
+    /* Resume download block */
+    .resume-block {
+      margin-top: 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 24px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+    .resume-block-left { display: flex; align-items: center; gap: 14px; }
+    .resume-icon { font-size: 22px; }
+    .resume-label { font-size: 14px; color: var(--text); font-weight: 400; }
+    .resume-sublabel { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); margin-top: 2px; }
+    .resume-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: var(--accent); color: #07080a; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none; font-weight: 500; transition: background 0.2s; flex-shrink: 0; }
+    .resume-btn:hover { background: #d4eb3e; }
+
+    /* ── VOLUNTEERCONNECT HERO PROJECT ── */
+    .vc-hero {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--accent);
+      border-radius: 2px;
+      margin-bottom: 1px;
+      overflow: hidden;
+    }
+    .vc-hero-inner {
+      display: grid; grid-template-columns: 1fr 340px;
+    }
+    .vc-main { padding: 44px; border-right: 1px solid var(--border); }
+    .vc-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--accent-dim); border: 1px solid var(--accent-border);
+      border-radius: 3px; padding: 4px 10px; margin-bottom: 20px;
+      font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--accent);
+      text-transform: uppercase; letter-spacing: 0.1em;
+    }
+    .vc-name { font-family: 'Bebas Neue', sans-serif; font-size: 54px; letter-spacing: 0.03em; color: var(--text); line-height: 0.95; margin-bottom: 6px; }
+    .vc-tagline { font-size: 14px; color: var(--accent); margin-bottom: 20px; font-weight: 400; }
+    .vc-desc { font-size: 15px; color: var(--muted); line-height: 1.75; margin-bottom: 28px; max-width: 520px; }
+    .vc-highlights { list-style: none; margin-bottom: 28px; }
+    .vc-highlights li { font-size: 13px; color: var(--muted); padding: 8px 0; border-bottom: 1px solid var(--border); display: flex; gap: 10px; }
+    .vc-highlights li::before { content: '◆'; color: var(--accent); font-size: 7px; flex-shrink: 0; margin-top: 6px; }
+    .vc-highlights li strong { color: var(--text); font-weight: 500; }
+    .vc-links { display: flex; gap: 12px; }
+    .vc-link { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); text-decoration: none; text-transform: uppercase; letter-spacing: 0.08em; border: 1px solid var(--accent-border); padding: 7px 14px; border-radius: 3px; transition: all 0.2s; }
+    .vc-link:hover { background: var(--accent-dim); }
+    .vc-side { padding: 44px 32px; display: flex; flex-direction: column; gap: 0; }
+    .vc-side-title { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 20px; }
+    .vc-stat { padding: 16px 0; border-bottom: 1px solid var(--border); }
+    .vc-stat:last-of-type { border-bottom: none; }
+    .vc-stat-val { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: var(--text); letter-spacing: 0.02em; line-height: 1; }
+    .vc-stat-val span { color: var(--accent); }
+    .vc-stat-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); margin-top: 3px; }
+    .vc-roles { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 6px; }
+    .vc-role-pill { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); background: var(--bg); border: 1px solid var(--border); border-radius: 3px; padding: 3px 8px; }
+
+    /* PROJECTS GRID */
+    .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+    .project-card { background: var(--bg); padding: 28px; text-decoration: none; display: flex; flex-direction: column; position: relative; overflow: hidden; transition: background 0.2s; }
+    .project-card:hover { background: var(--surface); }
+    .project-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+    .project-card.yellow::before { background: var(--accent); }
+    .project-card.orange::before { background: var(--orange); }
+    .project-card.blue::before { background: var(--blue); }
+    .project-card:hover::before { transform: scaleX(1); }
+    .project-card:hover .proj-arrow { transform: translate(3px, -3px); }
+    .proj-num { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 16px; }
+    .proj-icon { font-size: 26px; margin-bottom: 14px; }
+    .proj-name { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 0.04em; color: var(--text); margin-bottom: 8px; line-height: 1; }
+    .proj-desc { font-size: 13px; color: var(--muted); line-height: 1.7; flex: 1; margin-bottom: 20px; }
+    .proj-stats { display: flex; flex-direction: column; gap: 5px; margin-bottom: 20px; }
+    .proj-stat { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+    .proj-stat::before { content: '◆'; font-size: 6px; color: var(--accent); }
+    .proj-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid var(--border); }
+    .proj-links { display: flex; gap: 10px; }
+    .proj-link { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--accent); text-decoration: none; text-transform: uppercase; letter-spacing: 0.08em; }
+    .proj-link:hover { opacity: 0.7; }
+    .proj-arrow { font-size: 16px; color: var(--muted); transition: transform 0.2s; }
+
+    /* AUTOMATION SECTION */
+    .automation-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--orange);
+      padding: 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+    .auto-left {}
+    .auto-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--orange); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .auto-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--orange); }
+    .auto-title { font-family: 'Bebas Neue', sans-serif; font-size: 44px; letter-spacing: 0.04em; color: var(--text); line-height: 1; margin-bottom: 16px; }
+    .auto-title em { font-style: normal; color: var(--orange); }
+    .auto-desc { font-size: 15px; color: var(--muted); line-height: 1.75; margin-bottom: 24px; }
+    .auto-desc strong { color: var(--text); font-weight: 500; }
+    .auto-cta { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--orange); text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em; border: 1px solid rgba(255,140,66,0.3); padding: 9px 18px; border-radius: 3px; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s; }
+    .auto-cta:hover { background: var(--orange-dim); }
+    .auto-right {}
+    .auto-services { display: flex; flex-direction: column; gap: 1px; }
+    .auto-service {
+      background: var(--bg); border: 1px solid var(--border);
+      padding: 16px 18px; display: flex; align-items: center; gap: 14px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .auto-service:hover { border-color: var(--border-bright); background: var(--surface); }
+    .auto-service-icon { font-size: 20px; flex-shrink: 0; }
+    .auto-service-name { font-size: 14px; color: var(--text); font-weight: 400; margin-bottom: 2px; }
+    .auto-service-desc { font-size: 11px; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
+    .auto-service-tag { margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--muted); background: var(--subtle); border-radius: 3px; padding: 2px 7px; white-space: nowrap; flex-shrink: 0; }
+
+    /* SKILLS */
+    .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+    .skill-group { background: var(--bg); padding: 28px; }
+    .skill-group-title { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .skill-group-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+    .skill-tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 5px 11px; border-radius: 3px; border: 1px solid var(--border-bright); color: var(--text); background: var(--surface); transition: all 0.2s; }
+    .skill-tag:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+    .skill-tag.primary { border-color: var(--accent-border); color: var(--accent); background: var(--accent-dim); }
+
+    /* WRITING / BLOG */
+    .writing-block {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+      background: var(--border); border: 1px solid var(--border);
+    }
+    .writing-card { background: var(--bg); padding: 36px; text-decoration: none; transition: background 0.2s; display: flex; flex-direction: column; }
+    .writing-card:hover { background: var(--surface); }
+    .writing-card:hover .writing-arrow { transform: translate(3px,-3px); }
+    .writing-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; }
+    .writing-title { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 0.04em; color: var(--text); line-height: 1; margin-bottom: 12px; }
+    .writing-desc { font-size: 14px; color: var(--muted); line-height: 1.7; flex: 1; margin-bottom: 20px; }
+    .writing-footer { display: flex; align-items: center; justify-content: space-between; }
+    .writing-link { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; }
+    .writing-arrow { font-size: 16px; color: var(--muted); transition: transform 0.2s; }
+
+    /* CONTACT */
+    #contact {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 72px; position: relative; overflow: hidden; margin-bottom: 80px;
+    }
+    #contact::before { content: 'HIRE'; position: absolute; top: -30px; right: -20px; font-family: 'Bebas Neue', sans-serif; font-size: 200px; color: var(--border); letter-spacing: 0.05em; pointer-events: none; line-height: 1; }
+    .contact-inner { position: relative; z-index: 1; }
+    .contact-title { font-family: 'Bebas Neue', sans-serif; font-size: 68px; letter-spacing: 0.04em; color: var(--text); line-height: 1; margin-bottom: 14px; }
+    .contact-title em { font-style: normal; color: var(--accent); }
+    .contact-sub { font-size: 16px; color: var(--muted); max-width: 480px; margin-bottom: 40px; line-height: 1.7; }
+    .contact-links { display: flex; flex-wrap: wrap; gap: 14px; }
+    .contact-link { display: flex; align-items: center; gap: 12px; padding: 14px 22px; background: var(--bg); border: 1px solid var(--border-bright); border-radius: 4px; text-decoration: none; transition: all 0.2s; }
+    .contact-link:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .contact-link-icon { font-size: 15px; }
+    .contact-link-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1px; }
+    .contact-link-text { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text); }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 28px 0; display: flex; align-items: center; justify-content: space-between; }
+    footer p { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); }
+    footer p span { color: var(--accent); }
+
+    /* ANIMATIONS */
+    .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .fade-up.visible { opacity: 1; transform: none; }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .wrap { padding: 0 18px; }
+      .nav-links { display: none; }
+      .hero { padding: 96px 0 56px; }
+      .exp-row { grid-template-columns: 1fr; }
+      .exp-connector { display: none; }
+      .exp-right { border-left: none; border-top: 1px solid var(--border); padding: 14px 0 20px; }
+      .vc-hero-inner { grid-template-columns: 1fr; }
+      .vc-side { border-top: 1px solid var(--border); border-right: none; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .automation-block { grid-template-columns: 1fr; gap: 32px; padding: 28px; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .writing-block { grid-template-columns: 1fr; }
+      #contact { padding: 36px 22px; }
+      #contact::before { font-size: 100px; }
+      .contact-title { font-size: 44px; }
+      footer { flex-direction: column; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#"><span>~/</span>halleshubham</a>
+    <ul class="nav-links">
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#automation">Automation</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="ShubhamHalle-Resume.pdf" download class="nav-resume">↓ Resume</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-eyebrow fade-up">
+      <div class="hero-eyebrow-line"></div>
+      <span>Full-Stack Engineer · Pune, India · Open to Opportunities</span>
+    </div>
+
+    <h1 class="hero-name fade-up" style="transition-delay:0.08s">
+      Shubham<br><span class="accent">Halle</span>
+    </h1>
+
+    <p class="hero-role fade-up" style="transition-delay:0.16s">
+      React · Node.js · Java · Python · Automation · Self-Hosting<span class="blink"></span>
+    </p>
+
+    <p class="hero-bio fade-up" style="transition-delay:0.24s">
+      Product-focused engineer with <strong>7+ years</strong> shipping end-to-end features. I build things that work — from <strong>agentic AI systems</strong> to open-source CRMs, real-time infrastructure to browser extensions. Currently at <strong>FourKites</strong>, previously at <strong>Light & Wonder</strong>.
+    </p>
+
+    <div class="hero-callout fade-up" style="transition-delay:0.32s">
+      <div class="hero-callout-icon">⚡</div>
+      <div class="hero-callout-text">
+        I help teams <strong>discover automation opportunities</strong> and build <strong>agentic workflows</strong> — from n8n pipelines and AI integrations to full self-hosted infrastructure setup and support.
+      </div>
+    </div>
+
+    <div class="hero-ctas fade-up" style="transition-delay:0.4s">
+      <a href="https://github.com/halleshubham" target="_blank" class="btn btn-primary">↗ GitHub</a>
+      <a href="https://linkedin.com/in/halleshubham" target="_blank" class="btn btn-ghost">LinkedIn</a>
+      <a href="mailto:halleshubham@gmail.com" class="btn btn-ghost">Email Me</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="section-header fade-up">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Projects</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <!-- VolunteerConnect HERO -->
+    <div class="vc-hero fade-up">
+      <div class="vc-hero-inner">
+        <div class="vc-main">
+          <div class="vc-badge">★ Featured Project</div>
+          <div class="vc-name">Volunteer<br>Connect</div>
+          <div class="vc-tagline">Open-source CRM built for nonprofits and social organisations</div>
+          <p class="vc-desc">
+            A full-stack contacts management and relationship platform built from scratch for nonprofits. Handles thousands of contacts, event tracking, communication history, and bulk operations — designed for real organisations with real needs. Multiple nonprofits use it in production today.
+          </p>
+          <ul class="vc-highlights">
+            <li><strong>Full-Stack Solo Ownership:</strong> Built complete Node.js + MySQL application — schema design, REST APIs, React frontend, Docker, DevOps, QA. Every hat worn.</li>
+            <li><strong>Contact Management:</strong> CRUD operations, advanced search & filtering, tagging system, bulk imports, data export.</li>
+            <li><strong>Event Tracking:</strong> Relational schema for events, volunteer assignments, and communication history.</li>
+            <li><strong>Real-World Impact:</strong> Enables nonprofits to maintain regular, meaningful connections with thousands of volunteers and donors.</li>
+            <li><strong>Open Source:</strong> Publicly available — contributions welcome. Starred on GitHub.</li>
+          </ul>
+          <div class="vc-links">
+            <a href="https://github.com/halleshubham/VolunteerConnect" target="_blank" class="vc-link">GitHub →</a>
+            <a href="https://volunteerconnect.shackyapps.in" target="_blank" class="vc-link">Live Demo →</a>
+          </div>
+        </div>
+        <div class="vc-side">
+          <div>
+            <div class="vc-side-title">Project Stats</div>
+            <div class="vc-stat">
+              <div class="vc-stat-val">1000<span>+</span></div>
+              <div class="vc-stat-label">Contacts managed per org</div>
+            </div>
+            <div class="vc-stat">
+              <div class="vc-stat-val"><span>∞</span></div>
+              <div class="vc-stat-label">Free for nonprofits</div>
+            </div>
+            <div class="vc-stat">
+              <div class="vc-stat-val">100<span>%</span></div>
+              <div class="vc-stat-label">Solo built & maintained</div>
+            </div>
+          </div>
+          <div>
+            <div class="vc-side-title" style="margin-top:24px">Roles Worn</div>
+            <div class="vc-roles">
+              <span class="vc-role-pill">Product Manager</span>
+              <span class="vc-role-pill">Developer</span>
+              <span class="vc-role-pill">DevOps</span>
+              <span class="vc-role-pill">QA</span>
+              <span class="vc-role-pill">Designer</span>
+            </div>
+            <div class="tech-pills" style="margin-top:16px">
+              <span class="tech-pill">Node.js</span><span class="tech-pill">React</span><span class="tech-pill">MySQL</span><span class="tech-pill">Docker</span><span class="tech-pill">Express</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Other Projects Grid -->
+    <div class="projects-grid fade-up" style="margin-top:1px">
+      <div class="project-card yellow">
+        <div class="proj-num">P — 02</div>
+        <div class="proj-icon">🎙</div>
+        <div class="proj-name">VoiceType</div>
+        <p class="proj-desc">Chrome extension for speech-to-text in any input on any website. AI auto-punctuation, 18 languages, voice commands, wake word, silence auto-stop.</p>
+        <div class="proj-stats">
+          <div class="proj-stat">Gmail · Notion · ChatGPT · anywhere</div>
+          <div class="proj-stat">Powered by Claude API</div>
+          <div class="proj-stat">Alt+S hotkey · floating mic</div>
+        </div>
+        <div class="proj-footer">
+          <div class="proj-links">
+            <a href="https://github.com/halleshubham" target="_blank" class="proj-link">GitHub →</a>
+          </div>
+          <span class="proj-arrow">↗</span>
+        </div>
+      </div>
+
+      <div class="project-card orange">
+        <div class="proj-num">P — 03</div>
+        <div class="proj-icon">⚙️</div>
+        <div class="proj-name">JAP — WordPress Automation</div>
+        <p class="proj-desc">Open-source automation tool for WordPress publishing. Reduced weekly magazine effort from 14+ hours to 3 hours. WhatsApp automation doubled publication reach in 3 months.</p>
+        <div class="proj-stats">
+          <div class="proj-stat">14h → 3h weekly effort</div>
+          <div class="proj-stat">2× reach in 3 months</div>
+          <div class="proj-stat">Newsletter + WhatsApp automation</div>
+        </div>
+        <div class="proj-footer">
+          <div class="proj-links">
+            <a href="https://github.com/halleshubham/JAP" target="_blank" class="proj-link">GitHub →</a>
+          </div>
+          <span class="proj-arrow">↗</span>
+        </div>
+      </div>
+
+      <div class="project-card blue">
+        <div class="proj-num">P — 04</div>
+        <div class="proj-icon">📰</div>
+        <div class="proj-name">Strapazine</div>
+        <p class="proj-desc">Strapi-based magazine website template. Node.js + React CMS-backed publishing platform — headless architecture for digital publications.</p>
+        <div class="proj-stats">
+          <div class="proj-stat">Headless CMS architecture</div>
+          <div class="proj-stat">Strapi backend + React frontend</div>
+          <div class="proj-stat">Open source template</div>
+        </div>
+        <div class="proj-footer">
+          <div class="proj-links">
+            <a href="https://github.com/halleshubham/strapazine" target="_blank" class="proj-link">GitHub →</a>
+          </div>
+          <span class="proj-arrow">↗</span>
+        </div>
+      </div>
+
+      <div class="project-card yellow">
+        <div class="proj-num">P — 05</div>
+        <div class="proj-icon">🛠</div>
+        <div class="proj-name">Utilify Online</div>
+        <p class="proj-desc">Go-to utility web app — a growing collection of practical browser-based tools built in TypeScript. The "Swiss Army knife" approach to everyday dev/user utilities.</p>
+        <div class="proj-stats">
+          <div class="proj-stat">TypeScript · React</div>
+          <div class="proj-stat">Multiple utility tools</div>
+          <div class="proj-stat">Actively expanded</div>
+        </div>
+        <div class="proj-footer">
+          <div class="proj-links">
+            <a href="https://github.com/halleshubham/utilify-online" target="_blank" class="proj-link">GitHub →</a>
+          </div>
+          <span class="proj-arrow">↗</span>
+        </div>
+      </div>
+
+      <div class="project-card orange">
+        <div class="proj-num">P — 06</div>
+        <div class="proj-icon">🇮🇳</div>
+        <div class="proj-name">DEEP</div>
+        <p class="proj-desc">Programming language interface in Marathi. DEEP lets you write executable statements in Marathi and feeds them to traditional compilers — making coding accessible in regional languages.</p>
+        <div class="proj-stats">
+          <div class="proj-stat">Python · Language tooling</div>
+          <div class="proj-stat">Marathi programming interface</div>
+          <div class="proj-stat">Open source · 1 star · 2 forks</div>
+        </div>
+        <div class="proj-footer">
+          <div class="proj-links">
+            <a href="https://github.com/halleshubham/DEEP" target="_blank" class="proj-link">GitHub →</a>
+          </div>
+          <span class="proj-arrow">↗</span>
+        </div>
+      </div>
+
+      <div class="project-card blue">
+        <div class="proj-num">P — 07</div>
+        <div class="proj-icon">🖥️</div>
+        <div class="proj-name">Self-Hosted Stack</div>
+        <p class="proj-desc">Personal infrastructure running on multiple servers — n8n, Nextcloud, Postiz, sure.am, OpenCart, Ghost, WordPress and more. Full setup, maintenance, and support for open-source services.</p>
+        <div class="proj-stats">
+          <div class="proj-stat">n8n · Nextcloud · Postiz · sure.am</div>
+          <div class="proj-stat">Ghost · WordPress · OpenCart</div>
+          <div class="proj-stat">Available for setup support</div>
+        </div>
+        <div class="proj-footer">
+          <div class="proj-links">
+            <a href="https://github.com/halleshubham" target="_blank" class="proj-link">GitHub →</a>
+          </div>
+          <span class="proj-arrow">↗</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE — compact -->
+<section id="experience">
+  <div class="wrap">
+    <div class="section-header fade-up">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Experience</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="exp-timeline fade-up">
+
+      <div class="exp-row">
+        <div class="exp-left">
+          <div class="exp-period">Nov 2022 — Present</div>
+          <div class="exp-company">FourKites Inc.</div>
+          <div class="exp-location-tag">Remote</div>
+        </div>
+        <div class="exp-connector">
+          <div class="exp-dot"></div>
+          <div class="exp-line"></div>
+        </div>
+        <div class="exp-right">
+          <div class="exp-role">Sr. Software Engineer I & II</div>
+          <p class="exp-summary">Full-stack on Facility Management — <strong>Agent Alan</strong> (agentic AI booking), Gate Automation (WebSockets + QR), Appointments Manager (led 4-person team). Reduced UI load times 45%, 60%+ mobile adoption, design system adopted across 6+ repos.</p>
+          <div class="tech-pills">
+            <span class="tech-pill">React</span><span class="tech-pill">Angular</span><span class="tech-pill">TypeScript</span><span class="tech-pill">Node.js</span><span class="tech-pill">Java</span><span class="tech-pill">Python</span><span class="tech-pill">Kafka</span><span class="tech-pill">WebSockets</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-row">
+        <div class="exp-left">
+          <div class="exp-period">Sep 2017 — Nov 2022</div>
+          <div class="exp-company">Light & Wonder</div>
+          <div class="exp-location-tag">Pune</div>
+        </div>
+        <div class="exp-connector">
+          <div class="exp-dot"></div>
+          <div class="exp-line"></div>
+        </div>
+        <div class="exp-right">
+          <div class="exp-role">Software Engineer</div>
+          <p class="exp-summary">B2B online casino platform — built <strong>RGS Proxy Service</strong> (Java, Docker) for 2000+ operators, TypeScript/React frontend adapters, and backoffice management UIs.</p>
+          <div class="tech-pills">
+            <span class="tech-pill">TypeScript</span><span class="tech-pill">React</span><span class="tech-pill">Java</span><span class="tech-pill">Docker</span><span class="tech-pill">Jenkins</span><span class="tech-pill">MySQL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-row">
+        <div class="exp-left">
+          <div class="exp-period">May 2017 — Sep 2017</div>
+          <div class="exp-company">Crelio Health</div>
+          <div class="exp-location-tag">Pune</div>
+        </div>
+        <div class="exp-connector">
+          <div class="exp-dot"></div>
+        </div>
+        <div class="exp-right">
+          <div class="exp-role">Jr. Software Developer</div>
+          <p class="exp-summary">Redesigned support dashboard for LiveHealth.in SaaS healthcare platform — improving usability and operational efficiency for the support team.</p>
+          <div class="tech-pills">
+            <span class="tech-pill">JavaScript</span><span class="tech-pill">React</span><span class="tech-pill">REST APIs</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="resume-block fade-up">
+      <div class="resume-block-left">
+        <div class="resume-icon">📄</div>
+        <div>
+          <div class="resume-label">Full Resume</div>
+          <div class="resume-sublabel">Detailed experience, highlights & achievements</div>
+        </div>
+      </div>
+      <a href="ShubhamHalle-Resume.pdf" download class="resume-btn">↓ Download PDF</a>
+    </div>
+  </div>
+</section>
+
+<!-- AUTOMATION -->
+<section id="automation">
+  <div class="wrap">
+    <div class="section-header fade-up">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Automation & Agentic Workflows</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="automation-block fade-up">
+      <div class="auto-left">
+        <div class="auto-eyebrow">Available for consulting</div>
+        <h3 class="auto-title">I find where<br>automation <em>wins.</em></h3>
+        <p class="auto-desc">
+          I have a knack for <strong>spotting bottlenecks and repetitive processes</strong> that can be automated — across business ops, publishing, data pipelines, and communication workflows. I've cut 14-hour tasks to 3 hours, doubled publication reach, and built agentic AI appointment systems from scratch.
+        </p>
+        <p class="auto-desc">
+          Whether it's wiring up <strong>n8n workflows</strong>, building <strong>AI-powered agents</strong>, integrating APIs, or setting up the entire self-hosted infrastructure — I can help you assess, design, and ship it.
+        </p>
+        <a href="mailto:halleshubham@gmail.com" class="auto-cta">Let's talk automation →</a>
+      </div>
+      <div class="auto-right">
+        <div class="auto-services">
+          <div class="auto-service">
+            <div class="auto-service-icon">🔁</div>
+            <div>
+              <div class="auto-service-name">n8n Workflow Automation</div>
+              <div class="auto-service-desc">No-code/low-code pipelines for any business process</div>
+            </div>
+            <div class="auto-service-tag">Self-hosted</div>
+          </div>
+          <div class="auto-service">
+            <div class="auto-service-icon">🤖</div>
+            <div>
+              <div class="auto-service-name">Agentic AI Systems</div>
+              <div class="auto-service-desc">LLM-powered agents for booking, support, data processing</div>
+            </div>
+            <div class="auto-service-tag">Built at FourKites</div>
+          </div>
+          <div class="auto-service">
+            <div class="auto-service-icon">☁️</div>
+            <div>
+              <div class="auto-service-name">Nextcloud Setup & Support</div>
+              <div class="auto-service-desc">Private cloud storage infrastructure</div>
+            </div>
+            <div class="auto-service-tag">Self-hosted</div>
+          </div>
+          <div class="auto-service">
+            <div class="auto-service-icon">📢</div>
+            <div>
+              <div class="auto-service-name">Postiz — Social Media Scheduling</div>
+              <div class="auto-service-desc">Self-hosted social media management & automation</div>
+            </div>
+            <div class="auto-service-tag">Self-hosted</div>
+          </div>
+          <div class="auto-service">
+            <div class="auto-service-icon">🔗</div>
+            <div>
+              <div class="auto-service-name">sure.am & Link Management</div>
+              <div class="auto-service-desc">Short link infra, tracking, and redirect automation</div>
+            </div>
+            <div class="auto-service-tag">Self-hosted</div>
+          </div>
+          <div class="auto-service">
+            <div class="auto-service-icon">📬</div>
+            <div>
+              <div class="auto-service-name">Publishing Automation</div>
+              <div class="auto-service-desc">WordPress API, Ghost CMS, newsletter & WhatsApp pipelines</div>
+            </div>
+            <div class="auto-service-tag">JAP project</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="section-header fade-up">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Skills</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="skills-grid fade-up">
+      <div class="skill-group">
+        <div class="skill-group-title">Frontend</div>
+        <div class="skill-tags">
+          <span class="skill-tag primary">React</span><span class="skill-tag primary">TypeScript</span><span class="skill-tag primary">Angular</span><span class="skill-tag">JavaScript</span><span class="skill-tag">HTML / CSS</span><span class="skill-tag">SASS</span><span class="skill-tag">Vite</span><span class="skill-tag">Webpack</span><span class="skill-tag">Figma</span><span class="skill-tag">Design Systems</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Backend</div>
+        <div class="skill-tags">
+          <span class="skill-tag primary">Node.js</span><span class="skill-tag primary">Java</span><span class="skill-tag primary">Python</span><span class="skill-tag">Express</span><span class="skill-tag">REST APIs</span><span class="skill-tag">Microservices</span><span class="skill-tag">WebSockets</span><span class="skill-tag">Kafka</span><span class="skill-tag">PHP</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Infrastructure & Databases</div>
+        <div class="skill-tags">
+          <span class="skill-tag primary">Docker</span><span class="skill-tag">Kubernetes</span><span class="skill-tag">Jenkins</span><span class="skill-tag">CI/CD</span><span class="skill-tag">MySQL</span><span class="skill-tag">PostgreSQL</span><span class="skill-tag">MongoDB</span><span class="skill-tag">Redis</span><span class="skill-tag">Nginx</span><span class="skill-tag">Git</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Automation & Tooling</div>
+        <div class="skill-tags">
+          <span class="skill-tag primary">n8n</span><span class="skill-tag primary">Jest</span><span class="skill-tag primary">Playwright</span><span class="skill-tag">Jasmine</span><span class="skill-tag">Postiz</span><span class="skill-tag">sure.am</span><span class="skill-tag">Nextcloud</span><span class="skill-tag">WordPress API</span><span class="skill-tag">Twilio</span><span class="skill-tag">SendGrid</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WRITING -->
+<section id="writing">
+  <div class="wrap">
+    <div class="section-header fade-up">
+      <span class="section-num">05</span>
+      <h2 class="section-title">Writing</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="writing-block fade-up">
+      <a href="https://parivartak.org" target="_blank" class="writing-card">
+        <div class="writing-eyebrow">🖊 Blog · Hindi / Marathi</div>
+        <div class="writing-title">Parivartak</div>
+        <p class="writing-desc">My non-technical blog where I write about poetry (Hindi/Marathi), Digital Wellbeing, Gandhi-Ambedkar philosophy, and social change. Parivartak means "transformer" — reflecting the belief that ideas and words can shift perspectives.</p>
+        <div class="writing-footer">
+          <span class="writing-link">parivartak.org →</span>
+          <span class="writing-arrow">↗</span>
+        </div>
+      </a>
+      <div class="writing-card" style="cursor:default">
+        <div class="writing-eyebrow">💡 Interests</div>
+        <div class="writing-title">Beyond Code</div>
+        <p class="writing-desc">Keen on poetry in Hindi and Marathi. Passionate about Digital Wellbeing — thoughtful use of technology in everyday life. Student of Gandhi-Ambedkar political philosophy. Active open-source contributor who believes software can serve social good.</p>
+        <div class="writing-footer">
+          <span class="writing-link" style="opacity:0.4">—</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="wrap">
+  <div id="contact" class="fade-up">
+    <div class="contact-inner">
+      <h2 class="contact-title">Let's build<br>something <em>real.</em></h2>
+      <p class="contact-sub">Open to full-stack roles, automation consulting, and open-source collaboration. Based in Pune — comfortable with remote and async teams globally.</p>
+      <div class="contact-links">
+        <a href="mailto:halleshubham@gmail.com" class="contact-link">
+          <span class="contact-link-icon">✉</span>
+          <div><span class="contact-link-label">Email</span><span class="contact-link-text">halleshubham@gmail.com</span></div>
+        </a>
+        <a href="https://github.com/halleshubham" target="_blank" class="contact-link">
+          <span class="contact-link-icon">⌥</span>
+          <div><span class="contact-link-label">GitHub</span><span class="contact-link-text">github.com/halleshubham</span></div>
+        </a>
+        <a href="https://linkedin.com/in/halleshubham" target="_blank" class="contact-link">
+          <span class="contact-link-icon">◈</span>
+          <div><span class="contact-link-label">LinkedIn</span><span class="contact-link-text">in/halleshubham</span></div>
+        </a>
+        <a href="tel:+919967375492" class="contact-link">
+          <span class="contact-link-icon">◎</span>
+          <div><span class="contact-link-label">Phone</span><span class="contact-link-text">+91 99673 75492</span></div>
+        </a>
+        <a href="https://parivartak.org" target="_blank" class="contact-link">
+          <span class="contact-link-icon">🖊</span>
+          <div><span class="contact-link-label">Blog</span><span class="contact-link-text">parivartak.org</span></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <footer>
+    <p>© 2026 <span>Shubham Halle</span> · Pune · MIT College of Engineering, 2017</p>
+    <p>HTML + CSS · Hosted on <span>GitHub Pages</span></p>
+  </footer>
+</div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.fade-up, .exp-item').forEach(el => observer.observe(el));
+
+  setTimeout(() => {
+    document.querySelectorAll('.hero .fade-up').forEach((el, i) => {
+      setTimeout(() => el.classList.add('visible'), i * 120);
+    });
+  }, 80);
+</script>
+</body>
+</html>
