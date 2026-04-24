@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VoiceType — Privacy Policy</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=JetBrains+Mono&display=swap');
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #09090b; color: #e4e4e7;
+      font-family: 'Syne', system-ui, sans-serif;
+      line-height: 1.7; padding: 60px 24px; min-height: 100vh;
+    }
+    .container { max-width: 680px; margin: 0 auto; }
+
+    header { margin-bottom: 48px; display: flex; align-items: center; gap: 12px; }
+    header svg { width: 28px; height: 28px; }
+    header h1 { font-size: 22px; font-weight: 700; color: #f4f4f5; }
+    header .badge { margin-left: auto; font-size: 11px; background: #18181b; border: 1px solid #27272a; color: #71717a; padding: 3px 10px; border-radius: 5px; font-family: 'JetBrains Mono', monospace; }
+
+    .meta { font-size: 13px; color: #52525b; margin-bottom: 40px; font-family: 'JetBrains Mono', monospace; }
+
+    h2 { font-size: 18px; font-weight: 700; color: #f4f4f5; margin: 36px 0 12px; letter-spacing: -0.01em; }
+    h2:first-of-type { margin-top: 0; }
+    p { font-size: 15px; color: #a1a1aa; margin-bottom: 14px; }
+    ul { margin: 0 0 14px 20px; }
+    li { font-size: 15px; color: #a1a1aa; margin-bottom: 6px; }
+    li strong { color: #e4e4e7; }
+
+    .highlight {
+      background: #18181b; border: 1px solid #27272a; border-left: 3px solid #22c55e;
+      border-radius: 8px; padding: 16px 20px; margin: 20px 0;
+    }
+    .highlight p { margin: 0; color: #e4e4e7; font-size: 14px; }
+
+    .contact {
+      background: #18181b; border: 1px solid #27272a;
+      border-radius: 12px; padding: 24px; margin-top: 40px;
+    }
+    .contact h2 { margin-top: 0; }
+    a { color: #60a5fa; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    hr { border: none; border-top: 1px solid #27272a; margin: 36px 0; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <svg viewBox="0 0 24 24" fill="none">
+      <rect x="9" y="2" width="6" height="12" rx="3" fill="#e4e4e7"></rect>
+      <path d="M5 10a7 7 0 0 0 14 0" stroke="#e4e4e7" stroke-width="2" stroke-linecap="round"></path>
+      <line x1="12" y1="17" x2="12" y2="21" stroke="#e4e4e7" stroke-width="2" stroke-linecap="round"></line>
+      <line x1="8" y1="21" x2="16" y2="21" stroke="#e4e4e7" stroke-width="2" stroke-linecap="round"></line>
+    </svg>
+    <h1>VoiceType</h1>
+    <span class="badge">Privacy Policy</span>
+  </header>
+
+  <p class="meta">Last updated: April 2026 · Effective immediately upon installation</p>
+
+  <div class="highlight">
+    <p>✅ <strong>Short version:</strong> VoiceType does not sell, share, or transmit your personal data to any third parties. Your dictation history stays on your device. Microphone audio is processed locally by your browser.</p>
+  </div>
+
+  <h2>1. What We Collect</h2>
+  <p>VoiceType collects minimal data to function. Here is exactly what is stored and where:</p>
+  <ul>
+    <li><strong>Dictation history</strong> — stored locally in your browser via <code>chrome.storage.local</code>. Never sent to any server. Limited to the last 50 entries.</li>
+    <li><strong>Extension settings</strong> — stored locally in your browser via <code>chrome.storage.sync</code> (synced across your Chrome devices via your Google account, not our servers).</li>
+    <li><strong>Microphone audio</strong> — processed entirely by the browser's built-in Web Speech API. Audio is not recorded, stored, or sent to VoiceType servers.</li>
+  </ul>
+
+  <h2>2. Microphone Access</h2>
+  <p>VoiceType requests microphone access solely to enable speech recognition. The microphone is only activated when you explicitly toggle listening (via the mic button or Alt+S shortcut). We do not record audio in the background.</p>
+  <p>Speech recognition is handled by the browser's native <strong>Web Speech API</strong> (powered by Google's speech recognition service in Chrome). Please refer to Google's privacy policy for details on how Chrome handles audio during speech recognition.</p>
+
+  <h2>3. AI Auto-Punctuation</h2>
+  <p>When AI auto-punctuation is enabled, the text transcript of your speech is sent to the <strong>Anthropic API</strong> for punctuation correction. This means:</p>
+  <ul>
+    <li>Only the <strong>text transcript</strong> (not audio) is sent</li>
+    <li>Requests are made over HTTPS</li>
+    <li>No personally identifiable information is attached to these requests</li>
+    <li>Anthropic's data handling is governed by <a href="https://www.anthropic.com/privacy" target="_blank">Anthropic's Privacy Policy</a></li>
+  </ul>
+  <p>You can disable AI auto-punctuation in Settings at any time if you prefer fully local processing.</p>
+
+  <h2>4. What We Do NOT Collect</h2>
+  <ul>
+    <li>We do not collect your name, email, or any account information</li>
+    <li>We do not track which websites you visit</li>
+    <li>We do not use analytics or tracking pixels</li>
+    <li>We do not sell data to advertisers or third parties</li>
+    <li>We do not store data on external servers</li>
+  </ul>
+
+  <h2>5. Permissions Explained</h2>
+  <ul>
+    <li><strong>activeTab</strong> — required to inject the mic button and speech-to-text functionality into the current tab</li>
+    <li><strong>storage</strong> — required to save your settings and dictation history locally</li>
+    <li><strong>host_permissions (&lt;all_urls&gt;)</strong> — required so VoiceType works on any website, not just a predefined list</li>
+    <li><strong>Microphone</strong> — required for speech recognition (you are prompted to grant this by your browser)</li>
+  </ul>
+
+  <h2>6. Children's Privacy</h2>
+  <p>VoiceType is not directed at children under 13. We do not knowingly collect information from children.</p>
+
+  <h2>7. Changes to This Policy</h2>
+  <p>If we make material changes to this policy, we will update the "Last updated" date above and may notify users via the extension update notes.</p>
+
+  <hr>
+
+  <div class="contact">
+    <h2>Contact</h2>
+    <p>If you have questions about this privacy policy or how your data is handled, please reach out:</p>
+    <p style="margin-top:12px">
+      Developer: <strong>Shubham</strong><br>
+      You can submit feedback via the Chrome Web Store listing page.
+    </p>
+  </div>
+</div>
+
+
+<div id="voicetype-root"><button id="voicetype-btn" title="VoiceType (Alt+S)"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="9" y="2" width="6" height="12" rx="3" fill="#a1a1aa"></rect>
+      <path d="M5 10a7 7 0 0 0 14 0" stroke="#a1a1aa" stroke-width="2" stroke-linecap="round"></path>
+      <line x1="12" y1="17" x2="12" y2="21" stroke="#a1a1aa" stroke-width="2" stroke-linecap="round"></line>
+      <line x1="8" y1="21" x2="16" y2="21" stroke="#a1a1aa" stroke-width="2" stroke-linecap="round"></line>
+    </svg></button></div><div id="voicetype-toast"></div><div id="voicetype-shortcut-hint">Alt+S to toggle voice</div></body></html>
