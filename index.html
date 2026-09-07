@@ -178,6 +178,24 @@
     .vc-roles { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 6px; }
     .vc-role-pill { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); background: var(--bg); border: 1px solid var(--border); border-radius: 3px; padding: 3px 8px; }
 
+    /* Multiple featured heroes now stack in the Projects section - these
+       give each one the same yellow/orange/blue rotation the smaller
+       project-card grid already uses, instead of every hero defaulting to
+       the single --accent (yellow) color. */
+    .vc-hero.orange { border-top-color: var(--orange); }
+    .vc-hero.orange .vc-badge { background: var(--orange-dim); border-color: rgba(255,140,66,0.2); color: var(--orange); }
+    .vc-hero.orange .vc-tagline, .vc-hero.orange .vc-stat-val span { color: var(--orange); }
+    .vc-hero.orange .vc-highlights li::before { color: var(--orange); }
+    .vc-hero.orange .vc-link { color: var(--orange); border-color: rgba(255,140,66,0.2); }
+    .vc-hero.orange .vc-link:hover { background: var(--orange-dim); }
+
+    .vc-hero.blue { border-top-color: var(--blue); }
+    .vc-hero.blue .vc-badge { background: var(--blue-dim); border-color: rgba(77,159,255,0.2); color: var(--blue); }
+    .vc-hero.blue .vc-tagline, .vc-hero.blue .vc-stat-val span { color: var(--blue); }
+    .vc-hero.blue .vc-highlights li::before { color: var(--blue); }
+    .vc-hero.blue .vc-link { color: var(--blue); border-color: rgba(77,159,255,0.2); }
+    .vc-hero.blue .vc-link:hover { background: var(--blue-dim); }
+
     /* PROJECTS GRID */
     .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
     .project-card { background: var(--bg); padding: 28px; text-decoration: none; display: flex; flex-direction: column; position: relative; overflow: hidden; transition: background 0.2s; }
@@ -365,6 +383,162 @@
       <div class="section-line"></div>
     </div>
 
+    <!-- Socialize HERO -->
+    <div class="vc-hero fade-up">
+      <div class="vc-hero-inner">
+        <div class="vc-main">
+          <div class="vc-badge">★ Featured Project</div>
+          <div class="vc-name">Socialize</div>
+          <div class="vc-tagline">LangGraph pipeline that turns a newsletter inbox into scheduled social posts</div>
+          <p class="vc-desc">
+            A full-stack AI content pipeline — Gmail ingestion, LLM-driven research and drafting, AI-generated posters and video reels, a human-review Kanban board, and scheduled publishing to WhatsApp and Postiz. Built to run several brands at once, each with its own inbox, niche, and voice.
+          </p>
+          <ul class="vc-highlights">
+            <li><strong>Multi-Brand, Multi-User:</strong> Each brand connects its own Gmail inbox, niche, and identity; owners can share access with other users, with LLM/API costs always billing to the owner.</li>
+            <li><strong>AI Pipeline, Checkpointed:</strong> A LangGraph state graph orchestrates research, drafting, and media generation — checkpointed to Postgres so any run pauses for review and resumes exactly where it left off.</li>
+            <li><strong>Generative Media:</strong> AI-composed poster designs and multi-scene video reels, with correct Devanagari rendering for Hindi/Marathi — a known weak point for most image/video models.</li>
+            <li><strong>Scheduled Publishing:</strong> Send an approved post to WhatsApp instantly, or bulk-schedule a queue of them across a date range to Postiz-connected channels.</li>
+            <li><strong>Human-in-the-Loop, With an Escape Hatch:</strong> Every stage is a review gate by default; Auto Mode can auto-advance and auto-publish anything clearing a configurable confidence score.</li>
+          </ul>
+          <div class="vc-links">
+            <a href="https://github.com/halleshubham/Socialize" target="_blank" class="vc-link">GitHub →</a>
+          </div>
+        </div>
+        <div class="vc-side">
+          <div>
+            <div class="vc-side-title">Project Stats</div>
+            <div class="vc-stat">
+              <div class="vc-stat-val"><span>3</span></div>
+              <div class="vc-stat-label">Languages generated: English, Hindi, Marathi</div>
+            </div>
+            <div class="vc-stat">
+              <div class="vc-stat-val"><span>6</span></div>
+              <div class="vc-stat-label">AI poster templates, auto-selected per article</div>
+            </div>
+            <div class="vc-stat">
+              <div class="vc-stat-val"><span>2</span></div>
+              <div class="vc-stat-label">Publish channels: WhatsApp + Postiz</div>
+            </div>
+          </div>
+          <div>
+            <div class="vc-side-title" style="margin-top:24px">Roles Worn</div>
+            <div class="vc-roles">
+              <span class="vc-role-pill">Product Manager</span>
+              <span class="vc-role-pill">Full-Stack Developer</span>
+              <span class="vc-role-pill">AI/Prompt Engineer</span>
+              <span class="vc-role-pill">DevOps</span>
+            </div>
+            <div class="tech-pills" style="margin-top:16px">
+              <span class="tech-pill">FastAPI</span><span class="tech-pill">LangGraph</span><span class="tech-pill">PostgreSQL</span><span class="tech-pill">Docker</span><span class="tech-pill">LiteLLM</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shacky CMS HERO -->
+    <div class="vc-hero orange fade-up">
+      <div class="vc-hero-inner">
+        <div class="vc-main">
+          <div class="vc-badge">★ Featured Project</div>
+          <div class="vc-name">Shacky CMS</div>
+          <div class="vc-tagline">Self-hosted headless CMS for modern publishing — write, ingest, publish, send</div>
+          <p class="vc-desc">
+            A fast, self-hosted headless CMS built for magazine-style publishing. A rich TipTap editor with an AI writing panel, bulk DOCX ingestion with automatic AI categorisation and image generation, magazine-style issues sent as email and WhatsApp campaigns, and a full MCP server so AI agents like Claude can manage the whole CMS directly.
+          </p>
+          <ul class="vc-highlights">
+            <li><strong>Bulk DOCX Ingest:</strong> Upload a ZIP of Word docs — articles are parsed, images extracted, and queued for AI categorisation, tagging, and featured-image generation automatically.</li>
+            <li><strong>AI Pipeline, Provider-Agnostic:</strong> OpenAI, Gemini, Ollama, or Groq for auto-categorisation, tag generation, and featured image creation or stock-photo search.</li>
+            <li><strong>Issues & Campaigns:</strong> Group posts into magazine-style issues, then send them as email or WhatsApp campaigns to subscriber lists.</li>
+            <li><strong>MCP Server for AI Agents:</strong> Full OAuth2 + PKCE-secured Model Context Protocol server — Claude and other agents can read and write posts, issues, campaigns, and media directly.</li>
+            <li><strong>n8n Automation:</strong> A ready-made workflow takes a newsletter from Gmail inbox straight to a published, sent campaign with zero manual steps.</li>
+          </ul>
+          <div class="vc-links">
+            <a href="https://github.com/halleshubham/shacky-cms" target="_blank" class="vc-link">GitHub →</a>
+          </div>
+        </div>
+        <div class="vc-side">
+          <div>
+            <div class="vc-side-title">Project Stats</div>
+            <div class="vc-stat">
+              <div class="vc-stat-val"><span>4</span></div>
+              <div class="vc-stat-label">AI providers supported: OpenAI, Gemini, Ollama, Groq</div>
+            </div>
+            <div class="vc-stat">
+              <div class="vc-stat-val"><span>0</span></div>
+              <div class="vc-stat-label">Manual steps, inbox to sent campaign (n8n)</div>
+            </div>
+            <div class="vc-stat">
+              <div class="vc-stat-val">MCP</div>
+              <div class="vc-stat-label">Direct AI-agent read/write access</div>
+            </div>
+          </div>
+          <div>
+            <div class="vc-side-title" style="margin-top:24px">Roles Worn</div>
+            <div class="vc-roles">
+              <span class="vc-role-pill">Full-Stack Developer</span>
+              <span class="vc-role-pill">Product Designer</span>
+              <span class="vc-role-pill">DevOps</span>
+            </div>
+            <div class="tech-pills" style="margin-top:16px">
+              <span class="tech-pill">Next.js</span><span class="tech-pill">Fastify</span><span class="tech-pill">Prisma</span><span class="tech-pill">TypeScript</span><span class="tech-pill">Docker</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botsab HERO -->
+    <div class="vc-hero blue fade-up">
+      <div class="vc-hero-inner">
+        <div class="vc-main">
+          <div class="vc-badge">★ Featured Project</div>
+          <div class="vc-name">Botsab</div>
+          <div class="vc-tagline">Multi-tenant WhatsApp API platform — messaging, campaigns, and full AI-agent control via MCP</div>
+          <p class="vc-desc">
+            A self-hosted WhatsApp automation platform behind the messaging in several of my other projects. Connect unlimited WhatsApp accounts, send text/image/document/audio/video, run bulk campaigns with opt-out handling and anti-detection safeguards, and drive all of it from Claude or any other MCP-compatible AI agent.
+          </p>
+          <ul class="vc-highlights">
+            <li><strong>Multi-Tenant by Design:</strong> Unlimited WhatsApp accounts per deployment, each with its own instances, API keys, contact lists, and campaigns.</li>
+            <li><strong>Bulk Campaigns, Done Right:</strong> Configurable delays, batch pacing, daily limits, and send-hour windows, with automatic opt-out/STOP detection and live per-recipient progress tracking.</li>
+            <li><strong>22-Tool MCP Server:</strong> Full OAuth2 + PKCE authorization — Claude.ai connects with a single URL, no manual credential setup, and can drive every messaging/campaign/group capability directly.</li>
+            <li><strong>Real-Time Webhooks:</strong> 8 subscribable event types with optional HMAC-signed payloads and automatic retry with backoff.</li>
+            <li><strong>Powers Production Traffic:</strong> Backs the WhatsApp "Send" actions in both Socialize and Shacky CMS through the same REST API.</li>
+          </ul>
+          <div class="vc-links">
+            <a href="https://github.com/halleshubham/Botsab" target="_blank" class="vc-link">GitHub →</a>
+          </div>
+        </div>
+        <div class="vc-side">
+          <div>
+            <div class="vc-side-title">Project Stats</div>
+            <div class="vc-stat">
+              <div class="vc-stat-val"><span>22</span></div>
+              <div class="vc-stat-label">MCP tools exposed to AI agents</div>
+            </div>
+            <div class="vc-stat">
+              <div class="vc-stat-val"><span>8</span></div>
+              <div class="vc-stat-label">Subscribable webhook event types</div>
+            </div>
+            <div class="vc-stat">
+              <div class="vc-stat-val"><span>∞</span></div>
+              <div class="vc-stat-label">WhatsApp accounts per deployment</div>
+            </div>
+          </div>
+          <div>
+            <div class="vc-side-title" style="margin-top:24px">Roles Worn</div>
+            <div class="vc-roles">
+              <span class="vc-role-pill">Backend Developer</span>
+              <span class="vc-role-pill">DevOps</span>
+            </div>
+            <div class="tech-pills" style="margin-top:16px">
+              <span class="tech-pill">Node.js</span><span class="tech-pill">TypeScript</span><span class="tech-pill">Baileys</span><span class="tech-pill">PostgreSQL</span><span class="tech-pill">MCP</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- VolunteerConnect HERO -->
     <div class="vc-hero fade-up">
       <div class="vc-hero-inner">
@@ -424,24 +598,6 @@
     <div class="projects-grid fade-up" style="margin-top:1px">
       <div class="project-card yellow">
         <div class="proj-num">P — 02</div>
-        <div class="proj-icon">📨</div>
-        <div class="proj-name">Socialize</div>
-        <p class="proj-desc">LangGraph-based pipeline that turns newsletter emails into on-brand social posts — AI research/drafting, poster & reel generation, a human-review Kanban board, and scheduled publishing to WhatsApp and Postiz. Multi-brand, multi-user.</p>
-        <div class="proj-stats">
-          <div class="proj-stat">Gmail → LLM pipeline → WhatsApp/Postiz</div>
-          <div class="proj-stat">AI-generated posters & video reels</div>
-          <div class="proj-stat">FastAPI · LangGraph · Postgres · Docker</div>
-        </div>
-        <div class="proj-footer">
-          <div class="proj-links">
-            <a href="https://github.com/halleshubham/Socialize" target="_blank" class="proj-link">GitHub →</a>
-          </div>
-          <span class="proj-arrow">↗</span>
-        </div>
-      </div>
-
-      <div class="project-card orange">
-        <div class="proj-num">P — 03</div>
         <div class="proj-icon">🎙</div>
         <div class="proj-name">VoiceType</div>
         <p class="proj-desc">Chrome extension for speech-to-text in any input on any website. AI auto-punctuation, 18 languages, voice commands, wake word, silence auto-stop.</p>
@@ -458,8 +614,8 @@
         </div>
       </div>
 
-      <div class="project-card blue">
-        <div class="proj-num">P — 04</div>
+      <div class="project-card orange">
+        <div class="proj-num">P — 03</div>
         <div class="proj-icon">⚙️</div>
         <div class="proj-name">JAP — WordPress Automation</div>
         <p class="proj-desc">Open-source automation tool for WordPress publishing. Reduced weekly magazine effort from 14+ hours to 3 hours. WhatsApp automation doubled publication reach in 3 months.</p>
@@ -476,8 +632,8 @@
         </div>
       </div>
 
-      <div class="project-card yellow">
-        <div class="proj-num">P — 05</div>
+      <div class="project-card blue">
+        <div class="proj-num">P — 04</div>
         <div class="proj-icon">📰</div>
         <div class="proj-name">Strapazine</div>
         <p class="proj-desc">Strapi-based magazine website template. Node.js + React CMS-backed publishing platform — headless architecture for digital publications.</p>
@@ -494,8 +650,8 @@
         </div>
       </div>
 
-      <div class="project-card orange">
-        <div class="proj-num">P — 06</div>
+      <div class="project-card yellow">
+        <div class="proj-num">P — 05</div>
         <div class="proj-icon">🛠</div>
         <div class="proj-name">Utilify Online</div>
         <p class="proj-desc">Go-to utility web app — a growing collection of practical browser-based tools built in TypeScript. The "Swiss Army knife" approach to everyday dev/user utilities.</p>
@@ -512,8 +668,8 @@
         </div>
       </div>
 
-      <div class="project-card blue">
-        <div class="proj-num">P — 07</div>
+      <div class="project-card orange">
+        <div class="proj-num">P — 06</div>
         <div class="proj-icon">🇮🇳</div>
         <div class="proj-name">DEEP</div>
         <p class="proj-desc">Programming language interface in Marathi. DEEP lets you write executable statements in Marathi and feeds them to traditional compilers — making coding accessible in regional languages.</p>
@@ -530,8 +686,8 @@
         </div>
       </div>
 
-      <div class="project-card yellow">
-        <div class="proj-num">P — 08</div>
+      <div class="project-card blue">
+        <div class="proj-num">P — 07</div>
         <div class="proj-icon">🖥️</div>
         <div class="proj-name">Self-Hosted Stack</div>
         <p class="proj-desc">Personal infrastructure running on multiple servers — n8n, Nextcloud, Postiz, sure.am, OpenCart, Ghost, WordPress and more. Full setup, maintenance, and support for open-source services.</p>
@@ -549,25 +705,7 @@
       </div>
 
       <div class="project-card orange">
-        <div class="proj-num">P — 09</div>
-        <div class="proj-icon">💬</div>
-        <div class="proj-name">Botsab</div>
-        <p class="proj-desc">Production-ready multi-tenant WhatsApp API server. Multiple users, multiple numbers per account — REST + Webhook API over Baileys. Session persistence means no re-scan after restart.</p>
-        <div class="proj-stats">
-          <div class="proj-stat">Multi-account · multi-number</div>
-          <div class="proj-stat">REST API + outbound webhooks</div>
-          <div class="proj-stat">Node.js · TypeScript · PostgreSQL</div>
-        </div>
-        <div class="proj-footer">
-          <div class="proj-links">
-            <a href="https://github.com/halleshubham/Botsab" target="_blank" class="proj-link">GitHub →</a>
-          </div>
-          <span class="proj-arrow">↗</span>
-        </div>
-      </div>
-
-      <div class="project-card blue">
-        <div class="proj-num">P — 10</div>
+        <div class="proj-num">P — 08</div>
         <div class="proj-icon">🔌</div>
         <div class="proj-name">WP-MCP</div>
         <p class="proj-desc">MCP server that gives Claude direct control over WordPress sites — create posts, manage pages, upload media, and work with Gutenberg blocks via WP REST API. Multi-site, dry-run support, full audit log.</p>
